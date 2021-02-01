@@ -1,0 +1,82 @@
+.header-hidden-menu {
+    // display: none;
+    // display: flex;                                          // здесь --- HIDDEN MENU
+    background-color: #454545;
+    z-index: 30;
+    .header-hidden-menu_top {
+        height: 90px;
+        @media (min-width: 1710px) {
+            padding-top: 42px;
+        }
+        .container {
+            height: inherit;
+            display: flex;
+            justify-content: space-between;
+            & p {
+                align-self: center;
+                font-family: 'DrukTextWide';
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 18px;
+                color: #FFFFFF;
+            }
+            .header-hidden-menu_content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 258px;
+                & img {
+                    cursor: pointer;
+                }
+                .header-hidden-menu_close-menu {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    width: auto;
+                    height: 14px;
+                    .header-hidden-menu_line-top {
+                        transition: 0.3s all linear;
+                        background-color: #FFFFFF;
+                        height: 2.5px;
+                        width: 46px;
+                    }
+                    .header-hidden-menu_line-bottom {
+                        transition: 0.3s all linear;
+                        background-color: #FFFFFF;
+                        height: 2.5px;
+                        width: 46px;
+                    }
+                    &:hover {
+                        .header-hidden-menu_line-top {
+                            transform: translate(0,-2px);
+                        }
+                        .header-hidden-menu_line-bottom {
+                            transform: translate(0,2px);
+                        }
+                    }
+                }
+                & p {
+                    font-family: 'DrukTextWide';
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: rgba(255, 255, 255, 0.3);
+                    @media (min-width: 1710px) {
+                        font-size: 14px;
+                    }
+                }
+                .header-hidden-menu_phone {
+                    display: block;
+                    text-decoration: none;
+                    font-family: 'DrukTextWide';
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: rgba(255, 255, 255, 0.3);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    
+}
