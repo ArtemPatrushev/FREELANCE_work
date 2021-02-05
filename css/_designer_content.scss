@@ -113,7 +113,8 @@
             display: flex;
             align-items: center;
             width: 374px;
-            padding: 38px 0 36px 0;
+            height: 41px;
+            margin: 38px 0 36px 0;
             overflow: hidden;
             @media (min-width: 1710px) {
                 padding: 41px 0 39px 0;
@@ -216,7 +217,7 @@
                         width: 252px;
                     }
                     .top-manager_speech {
-                        display: block;                          // здесь
+                        display: none;                          // здесь
                         color: #454545;
                         width: 252px;
                     }

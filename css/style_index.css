@@ -216,7 +216,8 @@
       -ms-flex-align: center;
           align-items: center;
   width: 374px;
-  padding: 38px 0 36px 0;
+  height: 41px;
+  margin: 38px 0 36px 0;
   overflow: hidden;
 }
 
@@ -358,7 +359,7 @@
 }
 
 .characters .characters_person-images .characters_person-images_wrapper .characters_speech .characters_speech-wrapper .top-manager_speech {
-  display: block;
+  display: none;
   color: #454545;
   width: 252px;
 }
@@ -839,8 +840,8 @@
 }
 
 .slide-out-bottom {
-  -webkit-animation: slide-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
-  animation: slide-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  -webkit-animation: slide-out-bottom 0.7s ease-in-out both;
+  animation: slide-out-bottom 0.7s ease-in-out both;
 }
 
 @-webkit-keyframes slide-out-bottom {
@@ -852,7 +853,7 @@
   100% {
     -webkit-transform: translateY(1000px);
     transform: translateY(1000px);
-    opacity: 0;
+    opacity: 1;
   }
 }
 
@@ -865,7 +866,38 @@
   100% {
     -webkit-transform: translateY(1000px);
     transform: translateY(1000px);
-    opacity: 0;
+    opacity: 1;
+  }
+}
+
+.slide-in-bottom {
+  -webkit-animation: slide-in-bottom 0.7s ease-in-out both;
+  animation: slide-in-bottom 0.7s ease-in-out both;
+}
+
+@-webkit-keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -878,7 +910,9 @@
   margin: 0 auto;
   max-width: 1400px;
   height: 100vh;
+  max-height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
 @media (min-width: 1919px) {
@@ -892,6 +926,7 @@ body {
 }
 
 .fullscreen-back {
+  height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
@@ -899,8 +934,10 @@ body {
   left: 0;
   overflow: hidden;
   z-index: -1;
-  background: rgba(255, 255, 255, 0.5);
   background-size: cover;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background: rgba(239, 239, 239, 0.8);
 }
 
 .fullscreen-back .video-back {

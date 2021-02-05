@@ -3,6 +3,7 @@
 @import './header_hidden_menu';
 @import './sound_control';
 @import './index_animation_out';
+@import './index_animation_in';
 
 * {
     margin: 0;
@@ -13,7 +14,9 @@
     margin: 0 auto;
     max-width: 1400px;
     height: 100vh;
+    max-height: 100vh;
     position: relative;
+    overflow: hidden;
     @media (min-width: 1919px) {
         max-width: 1728px;
     }
@@ -24,6 +27,7 @@ body {
 }
 
 .fullscreen-back {
+    height: 100vh;
     position: fixed;
     top: 0;
     right: 0;
@@ -31,9 +35,10 @@ body {
     left: 0;
     overflow: hidden;
     z-index: -1;
-    background: rgba(255, 255, 255, 0.5);                // здесь --- ПЕРЕКЛЮЧЕНИЕ BACKGROUD
+    // background: rgba(255, 255, 255, 0.5);                // здесь --- ПЕРЕКЛЮЧЕНИЕ BACKGROUD
     background-size: cover;
-    // background: rgba(239, 239, 239, 0.9);                 // здесь
+    backdrop-filter: blur(10px);
+    background: rgba(239, 239, 239, 0.8);                 // здесь
     .video-back {
         z-index: -10;
         position: absolute;

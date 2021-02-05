@@ -1,11 +1,11 @@
 'use strict';
 
-// получить лого в header, при нажатии - смена back-a
-// c btn работать через id
+// проверить переход на main --- сделать проверку для перехода на главную страницу (currentPage --- не надо анимировать)
+// анимация у девчонки круче + есть переменные в js высоты элемента --- потом
+// back не меняется --- выделить для бэков два класса и переключать через js
+// речь персонажей анимируется, а не должна --- добавить в for if условие if
 
-// чтобы анимация скрывалась, надо всем элементам слелать wrapper
-
-const delay = 500;
+const delay = 300;
 
 const PAGES = Object.freeze({
     MAIN: 0,
@@ -20,7 +20,9 @@ const designer = {
     header: document.querySelector('.characters_header-top_designer'),
     text: document.querySelector('.characters_text_designer'),
     wellImg: document.querySelector('.characters_well-types_designer'),
-    sellText: document.querySelector('.characters_well-types_designer-item'),
+    wellText: document.querySelector('.characters_well-types_designer-item'),
+    btn: document.querySelector('.characters_more-info_btn'),
+    line: document.querySelector('.characters_line-border'),
     speech: document.querySelector('.designer_speech'),
     img: document.querySelector('.designer2'),
     videoBack: document.querySelector('.designer_video-back')
@@ -31,6 +33,8 @@ const engineer = {
     text: document.querySelector('.characters_text_engineer'),
     wellImg: document.querySelector('.characters_well-types_engineer'),
     wellText: document.querySelector('.characters_well-types_engineer-item'),
+    btn: document.querySelector('.characters_more-info_btn'),
+    line: document.querySelector('.characters_line-border'),
     speech: document.querySelector('.engineer_speech'),
     img: document.querySelector('.engineer2'),
     videoBack: document.querySelector('.engineer_video-back')
@@ -41,6 +45,8 @@ const topManager = {
     text: document.querySelector('.characters_text_top-manager'),
     wellImg: document.querySelector('.characters_well-types_top-manager'),
     wellText: document.querySelector('.characters_well-types_top-manager-item'),
+    btn: document.querySelector('.characters_more-info_btn'),
+    line: document.querySelector('.characters_line-border'),
     speech: document.querySelector('.top-manager_speech'),
     img: document.querySelector('.top-manager2'),
     videoBack: document.querySelector('.top-manager_video-back')
@@ -52,28 +58,27 @@ const mainPage = {
     text: document.querySelector('.main_text'),
     wellsType: document.querySelector('.main_wells'),
     wellTypesLine: document.querySelector('.main_well-types_line'),
-    button: document.querySelector('.main_more-info_btn'),
+    btn: document.querySelector('.main_more-info_btn'),
     specificationsText: document.querySelector('.main_more-info_text'),
-    personImages: document.querySelector('.main_person-images')
+    personImages: document.querySelector('.main_person-images'),
 };
 
 const indexMainContent = document.querySelector('.main');
 const indexCharactersContent = document.querySelector('.characters');
 const mainBackground = document.querySelector('.fullscreen-back');   // back не меняется
 const navMenuBtns = document.querySelectorAll('.top-menu_btns');
-// const mainHeader = document.querySelector('.main_header-top');
-
+const toMainBtn = document.querySelector('.header_content_logo');
 
 navMenuBtns.forEach(elem => {
     elem.addEventListener('click', handleClick);
 })
 
+toMainBtn.addEventListener('click', handleClick);
 
 function handleClick(clickEventBtn) {
     const clickedBtn = clickEventBtn.target;
     const btnId = clickedBtn.id;
     mainBackground.style.background = 'rgba(239, 239, 239, 0.9)';  // back
-    
     // сделать функцию, которая все отключит перед работой --- в конце прописать
     changeSlide(btnId);
 }
@@ -81,55 +86,43 @@ function handleClick(clickEventBtn) {
 function changeSlide(btnId) {
     if (currentPage === PAGES.MAIN) {     
         mainOff();
-    } // дописать дргуие также
+    } else if (currentPage === PAGES.DESIGNER) {
+        designerOff();
+    } else if (currentPage === PAGES.ENGINEER) {
+        engineerOff();
+    } else if (currentPage === PAGES.TOPMANAGER) {
+        topManagerOff();
+    }
 
     if (btnId === 'designerBtn') {
         designerOn();
-
-
-        // for (let key in designer) {
-        //     designer[key].style.display = 'block';
-        // }
-
-        // for (let key in engineer) {
-        //     engineer[key].style.display = 'none';
-        // }
-
-        // for (let key in topManager) {
-        //     topManager[key].style.display = 'none';
-        // }
-
     } else if (btnId === 'engineerBtn') {
-
-        for (let key in designer) {
-            designer[key].style.display = 'none';
-        }
-
-        for (let key in engineer) {
-            engineer[key].style.display = 'block';
-        }
-
-        for (let key in topManager) {
-            topManager[key].style.display = 'none';
-        }
-
-    } else {
-
-        for (let key in designer) {
-            designer[key].style.display = 'none';
-        }
-
-        for (let key in engineer) {
-            engineer[key].style.display = 'none';
-        }
-
-        for (let key in topManager) {
-            topManager[key].style.display = 'block';
-        }
+        engineerOn();
+    } else if (btnId === 'top-managerBtn') {
+        topManagerOn();
+    } else if (btnId === 'toMainPage') {
+        mainOn();
     }
 }
 
-function designerOn() {                // черновик
+function mainOn() {
+    setTimeout(function () {
+        indexCharactersContent.style.display = 'none';
+        indexMainContent.style.display = 'flex';
+        for (let key in mainPage) {
+            mainPage[key].classList.remove('slide-out-bottom');
+        }
+        for (let key in mainPage) {
+            mainPage[key].classList.add('slide-in-bottom');
+        }
+    }, delay);
+    currentPage = PAGES.MAIN;
+}
+
+function mainOff() {
+    for (let key in mainPage) {
+        mainPage[key].classList.remove('slide-in-bottom');  // выключить появление 
+    }
     for (let key in mainPage) {
         mainPage[key].classList.add('slide-out-bottom');
     }
@@ -137,50 +130,93 @@ function designerOn() {                // черновик
         indexMainContent.style.display = 'none';
         indexCharactersContent.style.display = 'flex';
     }, delay);
-    for (let key in designer) {
-        designer[key].style.display = 'block';
-    }
-    // for (let key in engineer) {
-    //     engineer[key].style.display = 'none';               
-    // }
-    // for (let key in topManager) {
-    //     topManager[key].style.display = 'none';
-    // }
-    currentPage = PAGES.DESIGNER;
-}
-
-
-function mainOn() {
-
-}
-
-function mainOff() {
-    // indexMainContent.style.display = 'none';
-    // indexCharactersContent.style.display = 'flex';
 }
 
 function designerOn() {
- // на включение тоже setTimeOut, тк на выключении он тоже есть (чтобы не пересеклись)
+    for (let key in designer) {
+        designer[key].classList.remove('slide-out-bottom');
+    }
+    for (let key in designer) {
+        designer[key].classList.add('slide-in-bottom');  // вписать появление 
+        // проверку через if, указать блок, в котором текст
+    }
+    setTimeout(function () {
+        for (let key in designer) {
+            designer[key].style.display = 'block';
+        }
+    }, delay);
+    currentPage = PAGES.DESIGNER;
 }
 
 function designerOff() {
-
+    for (let key in designer) {
+        designer[key].classList.remove('slide-in-bottom');  // выключить появление 
+    }
+    for (let key in designer) {
+        designer[key].classList.add('slide-out-bottom');
+    }
+    setTimeout(function () {
+        for (let key in designer) {
+            designer[key].style.display = 'none';
+        }
+    }, delay);
 }
-function engineerOn() {
 
+function engineerOn() {
+    for (let key in engineer) {
+        engineer[key].classList.remove('slide-out-bottom');
+    }
+    for (let key in engineer) {
+        engineer[key].classList.add('slide-in-bottom');  // вписать появление 
+    }
+    setTimeout(function () {
+        for (let key in engineer) {
+            engineer[key].style.display = 'block';
+        }
+    }, delay);
+    currentPage = PAGES.ENGINEER;
 }
 
 function engineerOff() {
-
+    for (let key in engineer) {
+        engineer[key].classList.remove('slide-in-bottom');    // выключить появление
+    }
+    for (let key in engineer) {
+        engineer[key].classList.add('slide-out-bottom');
+    }
+    setTimeout(function () {
+        for (let key in engineer) {
+            engineer[key].style.display = 'none';
+        }
+    }, delay);
 }
-function topManagerOn() {
 
+function topManagerOn() {
+    for (let key in topManager) {
+        topManager[key].classList.remove('slide-out-bottom');
+    }
+    for (let key in topManager) {
+        topManager[key].classList.add('slide-in-bottom');  // вписать появление 
+    }
+    setTimeout(function () {
+        for (let key in topManager) {
+            topManager[key].style.display = 'block';
+        }
+    }, delay);
+    currentPage = PAGES.TOPMANAGER;
 }
 
 function topManagerOff() {
-
+    for (let key in topManager) {
+        topManager[key].classList.remove('slide-in-bottom');    // выключить появление
+    }
+    for (let key in topManager) {
+        topManager[key].classList.add('slide-out-bottom');
+    }
+    setTimeout(function () {
+        for (let key in topManager) {
+            topManager[key].style.display = 'none';
+        }
+    }, delay);
 }
-
-// информация о текущей странице - кудв пихать эту переменную, где ее менять?    --- проверяем в changeSlide, меняем на включениях (текущее включение)
-// анимация не скрывается за блоком, а едет по всей странице      --- сделать всем wrapper
 
