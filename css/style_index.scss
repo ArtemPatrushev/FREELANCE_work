@@ -26,6 +26,15 @@ body {
     position: relative;
 }
 
+.fullscreen-back_main {
+    background: rgba(255, 255, 255, 0.5); 
+}
+
+.fullscreen-back_characters {
+    backdrop-filter: blur(10px);
+    background: rgba(239, 239, 239, 0.8);
+}
+
 .fullscreen-back {
     height: 100vh;
     position: fixed;
@@ -35,10 +44,8 @@ body {
     left: 0;
     overflow: hidden;
     z-index: -1;
-    // background: rgba(255, 255, 255, 0.5);                // здесь --- ПЕРЕКЛЮЧЕНИЕ BACKGROUD
     background-size: cover;
-    backdrop-filter: blur(10px);
-    background: rgba(239, 239, 239, 0.8);                 // здесь
+    // background: rgba(255, 255, 255, 0.5); 
     .video-back {
         z-index: -10;
         position: absolute;
@@ -131,6 +138,7 @@ header {
     @media (min-width: 1710px) {
         margin-top: 35px;
         padding: 20px;
+        width: 1385px;
     }
     .top-menu_btns {
         font-family: 'Montserrat';

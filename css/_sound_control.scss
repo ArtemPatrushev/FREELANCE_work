@@ -11,12 +11,12 @@
         align-items: center;
         margin-left: 35px;
         & img {
-            width: 14px;
-            height: 14px;
+            width: 11px;
+            height: 11px;
             margin-right: 10px;
             @media (min-width: 1710px) {
-                width: 11px;
-                height: 11px;
+                width: 14px;
+                height: 14px;
             }
         }
         & p {

@@ -6,7 +6,7 @@ let isScrolling = false;
 
 window.onwheel = function (event) {
     let delta = event.deltaY;
-    if (Math.abs(delta) > 60 && !isScrolling) {
+    if (Math.abs(delta) > 70 && !isScrolling) {
         isScrolling = true;
 
         setTimeout(function () {

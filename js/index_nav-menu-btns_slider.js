@@ -1,9 +1,9 @@
 'use strict';
 
-// проверить переход на main --- сделать проверку для перехода на главную страницу (currentPage --- не надо анимировать)
-// анимация у девчонки круче + есть переменные в js высоты элемента --- потом
-// back не меняется --- выделить для бэков два класса и переключать через js
-// речь персонажей анимируется, а не должна --- добавить в for if условие if
+// кнопка сбоку оранжевая - анимация
+
+// речь персонажей всегда присутствует на экране, даже когда персонажи меняются
+// придумать анимацию + есть переменные в js высоты элемента
 
 const delay = 300;
 
@@ -21,11 +21,12 @@ const designer = {
     text: document.querySelector('.characters_text_designer'),
     wellImg: document.querySelector('.characters_well-types_designer'),
     wellText: document.querySelector('.characters_well-types_designer-item'),
-    btn: document.querySelector('.characters_more-info_btn'),
-    line: document.querySelector('.characters_line-border'),
+    btn: document.getElementById('designer-btn'),
+    line: document.getElementById('designer-line'),
     speech: document.querySelector('.designer_speech'),
     img: document.querySelector('.designer2'),
-    videoBack: document.querySelector('.designer_video-back')
+    videoBack: document.querySelector('.designer_video-back'),
+    background: document.getElementById('backgroundIndex')
 };
 
 const engineer = {
@@ -33,11 +34,12 @@ const engineer = {
     text: document.querySelector('.characters_text_engineer'),
     wellImg: document.querySelector('.characters_well-types_engineer'),
     wellText: document.querySelector('.characters_well-types_engineer-item'),
-    btn: document.querySelector('.characters_more-info_btn'),
-    line: document.querySelector('.characters_line-border'),
+    btn: document.getElementById('engineer-btn'),
+    line: document.getElementById('engineer-line'),
     speech: document.querySelector('.engineer_speech'),
     img: document.querySelector('.engineer2'),
-    videoBack: document.querySelector('.engineer_video-back')
+    videoBack: document.querySelector('.engineer_video-back'),
+    background: document.getElementById('backgroundIndex')
 };
 
 const topManager = {
@@ -45,11 +47,12 @@ const topManager = {
     text: document.querySelector('.characters_text_top-manager'),
     wellImg: document.querySelector('.characters_well-types_top-manager'),
     wellText: document.querySelector('.characters_well-types_top-manager-item'),
-    btn: document.querySelector('.characters_more-info_btn'),
-    line: document.querySelector('.characters_line-border'),
+    btn: document.getElementById('top-manager-btn'),
+    line: document.getElementById('top-manager-line'),
     speech: document.querySelector('.top-manager_speech'),
     img: document.querySelector('.top-manager2'),
-    videoBack: document.querySelector('.top-manager_video-back')
+    videoBack: document.querySelector('.top-manager_video-back'),
+    background: document.getElementById('backgroundIndex')
 };
 
 const mainPage = {
@@ -61,13 +64,15 @@ const mainPage = {
     btn: document.querySelector('.main_more-info_btn'),
     specificationsText: document.querySelector('.main_more-info_text'),
     personImages: document.querySelector('.main_person-images'),
+    background: document.getElementById('backgroundIndex')
 };
 
 const indexMainContent = document.querySelector('.main');
 const indexCharactersContent = document.querySelector('.characters');
-const mainBackground = document.querySelector('.fullscreen-back');   // back не меняется
+const mainBackground = document.querySelector('.fullscreen-back');
 const navMenuBtns = document.querySelectorAll('.top-menu_btns');
 const toMainBtn = document.querySelector('.header_content_logo');
+const charactersRequestBtn = document.querySelector('.characters_request');
 
 navMenuBtns.forEach(elem => {
     elem.addEventListener('click', handleClick);
@@ -78,13 +83,12 @@ toMainBtn.addEventListener('click', handleClick);
 function handleClick(clickEventBtn) {
     const clickedBtn = clickEventBtn.target;
     const btnId = clickedBtn.id;
-    mainBackground.style.background = 'rgba(239, 239, 239, 0.9)';  // back
     // сделать функцию, которая все отключит перед работой --- в конце прописать
     changeSlide(btnId);
 }
 
 function changeSlide(btnId) {
-    if (currentPage === PAGES.MAIN) {     
+    if (currentPage === PAGES.MAIN && btnId !== 'toMainPage') {     
         mainOff();
     } else if (currentPage === PAGES.DESIGNER) {
         designerOff();
@@ -100,7 +104,7 @@ function changeSlide(btnId) {
         engineerOn();
     } else if (btnId === 'top-managerBtn') {
         topManagerOn();
-    } else if (btnId === 'toMainPage') {
+    } else if (btnId === 'toMainPage' && currentPage !== PAGES.MAIN) {
         mainOn();
     }
 }
@@ -109,11 +113,18 @@ function mainOn() {
     setTimeout(function () {
         indexCharactersContent.style.display = 'none';
         indexMainContent.style.display = 'flex';
+        mainPage.background.classList.add('fullscreen-back_main');
+        // charactersRequestBtn.classList.remove('.slide-in-left');
+        // charactersRequestBtn.classList.add('.slide-in-left');
+        charactersRequestBtn.style.display = 'none';
         for (let key in mainPage) {
             mainPage[key].classList.remove('slide-out-bottom');
         }
         for (let key in mainPage) {
-            mainPage[key].classList.add('slide-in-bottom');
+            if (key === 'background') {
+                console.log('miss')
+            } else
+                mainPage[key].classList.add('slide-in-bottom');
         }
     }, delay);
     currentPage = PAGES.MAIN;
@@ -121,14 +132,19 @@ function mainOn() {
 
 function mainOff() {
     for (let key in mainPage) {
-        mainPage[key].classList.remove('slide-in-bottom');  // выключить появление 
+        mainPage[key].classList.remove('slide-in-bottom');
     }
     for (let key in mainPage) {
-        mainPage[key].classList.add('slide-out-bottom');
+        if (key === 'background') {
+            console.log('miss');
+        } else 
+            mainPage[key].classList.add('slide-out-bottom');
     }
     setTimeout(function () {
+        mainPage.background.classList.remove('fullscreen-back_main');
         indexMainContent.style.display = 'none';
         indexCharactersContent.style.display = 'flex';
+        charactersRequestBtn.style.display = 'block';
     }, delay);
 }
 
@@ -137,27 +153,41 @@ function designerOn() {
         designer[key].classList.remove('slide-out-bottom');
     }
     for (let key in designer) {
-        designer[key].classList.add('slide-in-bottom');  // вписать появление 
-        // проверку через if, указать блок, в котором текст
+        if (key === 'speech' || key === 'background') {
+            console.log('speech');
+        } else 
+            designer[key].classList.add('slide-in-bottom');
     }
+    // charactersRequestBtn.classList.remove('slide-in-left');
+    // charactersRequestBtn.classList.add('slide-in-right');
     setTimeout(function () {
         for (let key in designer) {
-            designer[key].style.display = 'block';
+            if (key === 'background') {
+                designer.background.classList.add('fullscreen-back_characters');
+            } else
+                designer[key].style.display = 'block';
         }
+        // charactersRequestBtn.style.display = 'block';
     }, delay);
     currentPage = PAGES.DESIGNER;
 }
 
 function designerOff() {
     for (let key in designer) {
-        designer[key].classList.remove('slide-in-bottom');  // выключить появление 
+        designer[key].classList.remove('slide-in-bottom');
     }
     for (let key in designer) {
-        designer[key].classList.add('slide-out-bottom');
+        if (key === 'speech' || key === 'background') {
+            console.log('speech');
+        } else 
+            designer[key].classList.add('slide-out-bottom');
     }
     setTimeout(function () {
         for (let key in designer) {
-            designer[key].style.display = 'none';
+            if (key === 'background') {
+                designer.background.classList.remove('fullscreen-back_characters');
+            } else
+                designer[key].style.display = 'none';
         }
     }, delay);
 }
@@ -167,11 +197,17 @@ function engineerOn() {
         engineer[key].classList.remove('slide-out-bottom');
     }
     for (let key in engineer) {
-        engineer[key].classList.add('slide-in-bottom');  // вписать появление 
+        if (key === 'speech' || key === 'background') {
+            console.log('speech');
+        } else 
+            engineer[key].classList.add('slide-in-bottom');
     }
     setTimeout(function () {
         for (let key in engineer) {
-            engineer[key].style.display = 'block';
+            if (key === 'background') {
+                engineer.background.classList.add('fullscreen-back_characters');
+            } else
+                engineer[key].style.display = 'block';
         }
     }, delay);
     currentPage = PAGES.ENGINEER;
@@ -179,14 +215,20 @@ function engineerOn() {
 
 function engineerOff() {
     for (let key in engineer) {
-        engineer[key].classList.remove('slide-in-bottom');    // выключить появление
+        engineer[key].classList.remove('slide-in-bottom');
     }
     for (let key in engineer) {
-        engineer[key].classList.add('slide-out-bottom');
+        if (key === 'speech' || key === 'background') {
+            console.log('speech');
+        } else
+            engineer[key].classList.add('slide-out-bottom');
     }
     setTimeout(function () {
         for (let key in engineer) {
-            engineer[key].style.display = 'none';
+            if (key === 'background') {
+                engineer.background.classList.remove('fullscreen-back_characters');
+            } else
+                engineer[key].style.display = 'none';
         }
     }, delay);
 }
@@ -196,11 +238,17 @@ function topManagerOn() {
         topManager[key].classList.remove('slide-out-bottom');
     }
     for (let key in topManager) {
-        topManager[key].classList.add('slide-in-bottom');  // вписать появление 
+        if (key === 'speech' || key === 'background') {
+            console.log('speech');
+        } else 
+            topManager[key].classList.add('slide-in-bottom');
     }
     setTimeout(function () {
         for (let key in topManager) {
-            topManager[key].style.display = 'block';
+            if (key === 'background') {
+                topManager.background.classList.add('fullscreen-back_characters');
+            } else
+                topManager[key].style.display = 'block';
         }
     }, delay);
     currentPage = PAGES.TOPMANAGER;
@@ -208,14 +256,20 @@ function topManagerOn() {
 
 function topManagerOff() {
     for (let key in topManager) {
-        topManager[key].classList.remove('slide-in-bottom');    // выключить появление
+        topManager[key].classList.remove('slide-in-bottom');
     }
     for (let key in topManager) {
-        topManager[key].classList.add('slide-out-bottom');
+        if (key === 'speech' || key === 'background') {
+            console.log('speech');
+        } else
+            topManager[key].classList.add('slide-out-bottom');
     }
     setTimeout(function () {
         for (let key in topManager) {
-            topManager[key].style.display = 'none';
+            if (key === 'background') {
+                topManager.background.classList.remove('fullscreen-back_characters');
+            } else
+                topManager[key].style.display = 'none';
         }
     }, delay);
 }

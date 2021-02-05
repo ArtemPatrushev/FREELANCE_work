@@ -90,7 +90,7 @@
             <source src="./video/start.webm" type="video/webm">
         </video>
     </div>
-    <div class="fullscreen-back"></div>
+    <div class="fullscreen-back fullscreen-back_main" id="backgroundIndex"></div>
 
     <div class="container">
 
@@ -227,14 +227,22 @@
                     </p>
                 </div>
                 <div class="characters_more-info">
-                    <div class="characters_more-info_btn">
+                    <div class="characters_more-info_btn" id="designer-btn">
+                        ПОДРОБНЕЕ
+                    </div>
+                    <div class="characters_more-info_btn" id="engineer-btn">
+                        ПОДРОБНЕЕ
+                    </div>
+                    <div class="characters_more-info_btn" id="top-manager-btn">
                         ПОДРОБНЕЕ
                     </div>
                     <div class="characters_well-types">
                         <img class="characters_well-types_designer" src="./img/complex_trajectory_well.svg" alt="img">
                         <img class="characters_well-types_engineer" src="./img/siege_drilling.svg" alt="img">
                         <img class="characters_well-types_top-manager" src="./img/EDR_well.svg" alt="img">
-                        <div class="characters_line-border"></div>
+                        <div class="characters_line-border" id="designer-line"></div>
+                        <div class="characters_line-border" id="engineer-line"></div>
+                        <div class="characters_line-border" id="top-manager-line"></div>
                         <p class="characters_well-types_designer-item">Скважины сложной траектории</p>
                         <p class="characters_well-types_engineer-item">Бурение на обсадной колонне</p>
                         <p class="characters_well-types_top-manager-item">Строительтво ERD-скважин</p>

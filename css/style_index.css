@@ -82,7 +82,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 146px;
+  width: 148px;
   height: 520px;
   -webkit-box-align: end;
       -ms-flex-align: end;
@@ -92,6 +92,7 @@
 @media (min-width: 1710px) {
   .characters .characters_sound-control {
     width: 144px;
+    height: 675px;
   }
 }
 
@@ -107,15 +108,15 @@
 }
 
 .characters .characters_sound-control .characters_sound-cursor img {
-  width: 14px;
-  height: 14px;
+  width: 11px;
+  height: 11px;
   margin-right: 10px;
 }
 
 @media (min-width: 1710px) {
   .characters .characters_sound-control .characters_sound-cursor img {
-    width: 11px;
-    height: 11px;
+    width: 13px;
+    height: 13px;
   }
 }
 
@@ -130,7 +131,8 @@
 
 @media (min-width: 1710px) {
   .characters .characters_sound-control .characters_sound-cursor p {
-    font-size: 14px;
+    font-size: 12px;
+    margin-right: 10px;
   }
 }
 
@@ -163,6 +165,7 @@
 @media (min-width: 1710px) {
   .characters .characters_content .characters_header-top {
     font-size: 48px;
+    width: 456px;
   }
 }
 
@@ -223,7 +226,7 @@
 
 @media (min-width: 1710px) {
   .characters .characters_content .characters_more-info {
-    padding: 41px 0 39px 0;
+    padding: 41px 0 41px 0;
   }
 }
 
@@ -237,6 +240,7 @@
   background: #D9793E;
   padding: 13.5px 48px;
   cursor: pointer;
+  display: none;
 }
 
 @media (min-width: 1710px) {
@@ -261,6 +265,7 @@
 @media (min-width: 1710px) {
   .characters .characters_content .characters_more-info .characters_well-types {
     padding: 15px 0;
+    font-size: 12px;
   }
 }
 
@@ -270,6 +275,13 @@
   background-color: #BCBCBC;
   margin-left: 25px;
   margin-right: 25px;
+  display: none;
+}
+
+@media (min-width: 1710px) {
+  .characters .characters_content .characters_more-info .characters_well-types .characters_line-border {
+    height: 40px;
+  }
 }
 
 .characters .characters_content .characters_more-info .characters_well-types .characters_well-types_designer {
@@ -299,6 +311,7 @@
 .characters .characters_person-images {
   position: absolute;
   width: 35%;
+  height: 635px;
   right: 190px;
   bottom: 0;
   height: 600px;
@@ -312,7 +325,8 @@
 
 @media (min-width: 1710px) {
   .characters .characters_person-images {
-    height: auto;
+    height: 700px;
+    right: -300px;
   }
 }
 
@@ -335,6 +349,13 @@
   right: 333px;
   bottom: 449px;
   padding: 20px 44px 20px 24px;
+}
+
+@media (min-width: 1710px) {
+  .characters .characters_person-images .characters_person-images_wrapper .characters_speech {
+    right: 944px;
+    bottom: 595px;
+  }
 }
 
 .characters .characters_person-images .characters_person-images_wrapper .characters_speech .characters_speech-wrapper {
@@ -377,7 +398,7 @@
 
 .characters .characters_person-images .characters_person-images_wrapper img {
   position: absolute;
-  height: 590px;
+  height: 635px;
   -o-object-fit: cover;
      object-fit: cover;
   bottom: 0;
@@ -385,18 +406,20 @@
 
 @media (min-width: 1710px) {
   .characters .characters_person-images .characters_person-images_wrapper img {
-    min-height: 750px;
+    min-height: 780px;
   }
 }
 
 .characters .characters_person-images .characters_person-images_wrapper .designer2 {
   display: none;
+  height: 615px;
   z-index: 1;
   right: 0;
 }
 
 @media (min-width: 1710px) {
   .characters .characters_person-images .characters_person-images_wrapper .designer2 {
+    height: 700px;
     right: 502px;
   }
 }
@@ -409,6 +432,7 @@
 
 @media (min-width: 1710px) {
   .characters .characters_person-images .characters_person-images_wrapper .engineer2 {
+    min-height: 820px;
     right: 502px;
   }
 }
@@ -421,6 +445,7 @@
 
 @media (min-width: 1710px) {
   .characters .characters_person-images .characters_person-images_wrapper .top-manager2 {
+    min-height: 820px;
     right: 502px;
   }
 }
@@ -464,6 +489,13 @@
   height: 220px;
   width: 1100px;
   overflow: hidden;
+}
+
+@media (min-width: 1710px) {
+  .characters .characters_video {
+    width: 1430px;
+    right: 157px;
+  }
 }
 
 .characters .characters_video .characters_video-wrapper {
@@ -813,15 +845,15 @@
 }
 
 .sound-control .sound-cursor img {
-  width: 14px;
-  height: 14px;
+  width: 11px;
+  height: 11px;
   margin-right: 10px;
 }
 
 @media (min-width: 1710px) {
   .sound-control .sound-cursor img {
-    width: 11px;
-    height: 11px;
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -842,6 +874,16 @@
 .slide-out-bottom {
   -webkit-animation: slide-out-bottom 0.7s ease-in-out both;
   animation: slide-out-bottom 0.7s ease-in-out both;
+}
+
+.slide-in-right {
+  -webkit-animation: slide-in-right 0.7s ease-in-out both;
+  animation: slide-in-right 0.7s ease-in-out both;
+}
+
+.slide-in-left {
+  -webkit-animation: slide-in-left 0.7s ease-in-out both;
+  animation: slide-in-left 0.7s ease-in-out both;
 }
 
 @-webkit-keyframes slide-out-bottom {
@@ -866,6 +908,58 @@
   100% {
     -webkit-transform: translateY(1000px);
     transform: translateY(1000px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(1000px);
+    transform: translateX(1000px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    transform: translateX(-1000px);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -925,6 +1019,16 @@ body {
   position: relative;
 }
 
+.fullscreen-back_main {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.fullscreen-back_characters {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background: rgba(239, 239, 239, 0.8);
+}
+
 .fullscreen-back {
   height: 100vh;
   position: fixed;
@@ -935,9 +1039,6 @@ body {
   overflow: hidden;
   z-index: -1;
   background-size: cover;
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  background: rgba(239, 239, 239, 0.8);
 }
 
 .fullscreen-back .video-back {
@@ -1072,6 +1173,7 @@ header .header_content .header_phone {
   .top-menu {
     margin-top: 35px;
     padding: 20px;
+    width: 1385px;
   }
 }
 
