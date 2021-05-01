@@ -1,7 +1,15 @@
 https://www.figma.com/file/xbnx5vJwxcj3BAckFvvajq/moment?node-id=1395%3A0
 
+http://dev1.portalmaster.ru/ --- сайт
+
 https://pm.portalmaster.ru
 
 https://github.com/andrey-kosinov/tmk-momentum
+git push git@github.com:andrey-kosinov/tmk-momentum.git --- сюда заливать
 
 https://chipsa.ru/
+
+https://nannalagerman.com/
+
+
+523 532 525

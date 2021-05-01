@@ -24,6 +24,10 @@
     @media (min-width: 1710px) {
         margin-top: 52px;
     }
+    @media (max-width: 1024px) {
+        flex-direction: column-reverse;
+        margin-left: 47px;
+    }
     .characters_sound-control {
         display: flex;
         width: 148px;
@@ -32,12 +36,23 @@
         @media (min-width: 1710px) {
             width: 144px;
             height: 675px;
+            position: absolute;
+            top: 276px;
+        }
+        @media (max-width: 1024px) {
+            position: absolute;
+            top: 208px;
+            left: 55px;
         }
         .characters_sound-cursor {
             cursor: pointer;
             display: flex;
             align-items: center;
             margin-left: 35px;
+            @media (max-width: 1024px) {
+                position: fixed;
+                z-index: 20;
+            }
             & img {
                 width: 11px;
                 height: 11px;
@@ -45,6 +60,11 @@
                 @media (min-width: 1710px) {
                     width: 13px;
                     height: 13px;
+                }
+                @media (max-width: 1024px) {
+                    color: #cccccc;
+                    width: 14px;
+                    height: 14px;
                 }
             }
             & p {
@@ -57,6 +77,11 @@
                 @media (min-width: 1710px) {
                     font-size: 12px;
                     margin-right: 10px;
+                }
+                @media (max-width: 1024px) {
+                    color: #cccccc;
+                    width: 85px;
+                    font-size: 14px;
                 }
             }
         }
@@ -78,6 +103,9 @@
             @media (min-width: 1710px) {
                 font-size: 48px;
                 width: 456px;
+            }
+            @media (max-width: 1024px) {
+                font-size: 41px;
             }
             .characters_header-top_designer {
                 display: none;                                  // здесь --- ПЕРЕКЛЮЧЕНИЕ ЗАГОЛОВКА ПЕРСОНАЖЕЙ
@@ -102,6 +130,9 @@
                 margin-top: 29px;
                 font-size: 16px;
             }
+            @media (max-width: 1024px) {
+                margin-top: 32px;
+            }
             .characters_text_designer {
                 display: none;                                // здесь --- ПЕРЕКЛЮЧЕНИЕ ТЕКСТА ПЕРСОНАЖЕЙ
             }
@@ -122,6 +153,9 @@
             @media (min-width: 1710px) {
                 padding: 41px 0 41px 0;
             }
+            @media (max-width: 1024px) {
+                margin: 30px 0 49px 0;
+            }
             .characters_more-info_btn {
                 margin-right: 48px;
                 font-family: 'DrukTextWide';
@@ -136,6 +170,9 @@
                 @media (min-width: 1710px) {
                     font-size: 12px;
                     padding: 16.5px 30px;
+                }
+                @media (max-width: 1024px) {
+                    margin-right: 28px;
                 }
             }
             .characters_well-types {
@@ -159,6 +196,10 @@
                     display: none;
                     @media (min-width: 1710px) {
                         height: 40px;
+                    }
+                    @media (max-width: 1024px) {
+                        margin-left: 20px;
+                        margin-right: 20px;
                     }
                 }
                 .characters_well-types_designer {
@@ -265,6 +306,9 @@
                     height: 700px;
                     right: 502px;
                 }
+                @media (max-width: 1024px) {
+                    right: -178px;
+                }
             }
             .engineer2 {
                 display: none;                           // здесь
@@ -273,6 +317,10 @@
                 @media (min-width: 1710px) {
                     min-height: 820px;
                     right: 502px;
+                }
+                @media (max-width: 1024px) {
+                    height: 650px;
+                    right: -170px;
                 }
             }
             .top-manager2 {
@@ -283,10 +331,17 @@
                     min-height: 820px;
                     right: 502px;
                 }
+                @media (max-width: 1024px) {
+                    height: 650px;
+                    right: -190px;
+                }
             }
             &:hover {
                 .characters_speech {
                     display: block;
+                    @media (max-width: 1024px) {
+                        display: none;
+                    }
                 }
             }
         }
@@ -297,8 +352,14 @@
         flex-direction: column;
         right: 0;
         bottom: 53px;
+        @media (max-width: 1024px) {
+            z-index: 20;
+        }
         & img {
             margin-bottom: 40px;
+            @media (max-width: 1024px) {
+                display: none;
+            }
         }
         & p {
             font-family: 'DrukTextWide';
@@ -308,6 +369,11 @@
             text-decoration-line: underline;
             color: #454545;
             cursor: pointer;
+            @media (max-width: 1024px) {
+                color: #ffffff;
+                margin-right: 50px;
+                margin-bottom: -18px;
+            }
         }
     }
     .characters_video {
@@ -321,6 +387,10 @@
             width: 1430px;
             right: 157px;
         }
+        @media (max-width: 1024px) {
+            right: 0;
+            left: 0;
+        }
         .characters_video-wrapper {
             position: relative;
             & video {
@@ -330,16 +400,25 @@
                 display: none;                         // здесь --- ВИДЕО ФОН ПЕРСНАЖЕЙ
                 width: 76vw;
                 top: -70px;
+                @media (max-width: 1024px) {
+                    width: 100vw;
+                }
             }
             .engineer_video-back {
                 display: none;                        // здесь 
                 width: 76vw;
                 top: -200px;
+                @media (max-width: 1024px) {
+                    width: 100vw;
+                }
             }
             .top-manager_video-back {
                 display: none;                          // здесь
                 top: -149px;
                 width: 76vw;
+                @media (max-width: 1024px) {
+                    width: 100vw;
+                }
             }
         }
     }
